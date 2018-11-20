@@ -1,0 +1,25 @@
+.item-box {
+  border: solid black 1px;
+  height: 300px;
+  width: 300px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+.item-img{
+  height: 250px;
+  width: 250px;
+  overflow: hidden;
+}
+.item-title{
+  font-size: 18px;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+.dash-display {
+  display: flex;
+  flex-flow: row wrap
+}
