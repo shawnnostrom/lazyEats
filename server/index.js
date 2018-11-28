@@ -5,7 +5,7 @@ const cors = require('cors');
 const logger = require('morgan')
 const massive = require ('massive');
 const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
+
 
 
 const app = express();
@@ -18,6 +18,7 @@ massive (process.env.dataBase)
 .then ( db => {
   app.set('db',db)
   console.log('connected to database')
+  require('./configure/session')(app,db);
   app.use('/api', require('./routes'))
 })
 .catch ( error => console.error (error))

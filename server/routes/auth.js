@@ -6,26 +6,20 @@ const hashPassword = require('./helpers/hash')
 
 router.use( (req,res,next) => {
   req.db = req.app.get('db')
+  next();
 })
 
 router.post('/register', (req,res,next) => {
   req.db.users.find({username: req.body.username})
     .then(user => {
-      if (user) {
+      if (user[0]) {
         res.status(409).send('User already exists')
       } else {
         hashPassword (req.body.password)
           .then(hash => {
             return req.db.users.insert ({ username: req.body.username , password: hash})
           })
-          .then(user => {
-            req.login((user,error) => {
-              if(error){
-                return next(error);
-              }
-              res.json({id:user.id ,username:user.username})
-            });
-          })
+          .then( () => res.status(200).send('user created'))
           .catch(next);
       }
     });
@@ -34,20 +28,23 @@ router.post('/register', (req,res,next) => {
 router.post('/login', (req,res,next) => {
   req.db.users.find({username : req.body.username})
     .then(user => {
-      if(!user){
+      
+      if(!user[0]){
         res.status(401).send("User doesn't exists")
       } else {
-        comparePassword(req.body.password, user.password)
+        comparePassword(req.body.password, user[0].password)
           .then(correct => {
+            console.log(correct)
             if(!correct){
               res.status(401).send('Password Incorrect')
             }else{
-              req.login((user,error) => {
-                if(error) return next(error);
-                res.json({id:user.id , username:user.username})
-              });
+             console.log(user[0])
+             res.json({id:user[0].id,user:user[0].username})
+              
             }
           })
+          .catch(error => console.log(error))
+          
       }
     })
     .catch(next)

@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
+import axios from 'axios';
 
-export default class Api extends Component {
-  componentDidMount = () => {
-    
-  }
+
   
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
+ export const getFood = (location) => {
+   return axios.post('http://localhost:8080/api/yelp/info',location)
+          
   }
-}
+  export const register = (user) => {
+    return axios.post('http://localhost:8080/api/auth/register',user)
+  }
+
+  export const login = (user) => {
+    return axios.post('http://localhost:8080/api/auth/login',user)
+  }
+
+

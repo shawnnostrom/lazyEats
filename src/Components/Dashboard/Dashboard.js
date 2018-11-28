@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {connect}  from 'react-redux'
 import './Dashboard.css'
-import axios from 'axios'
 import _ from 'lodash'
+import {getFood} from '../../Api/Api'
 
 class Dashboard extends Component {
 
@@ -29,12 +29,13 @@ class Dashboard extends Component {
         longitude: position.coords.longitude,
         latitude: position.coords.latitude
       }
-      axios.post('http://localhost:8080/api/yelp/info',location)
-          .then( res => {
+      getFood(location)
+      .then( res => {
 
-           this.setState({food : _.uniqBy(res.data.jsonBody.businesses, (e) => e.name) })
-          })
-          .catch( error => console.log(error))
+        this.setState({food : _.uniqBy(res.data.jsonBody.businesses, (e) => e.name) })
+       })
+       .catch( error => console.log(error))
+
       
 
     })

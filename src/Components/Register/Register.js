@@ -1,7 +1,32 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
+import {register} from '../../Api/Api'
 
 class Register extends Component {
+
+  state = {
+    userName: '',
+    password: ''
+  }
+
+  handleClick = () => {
+    const user = {
+      username: this.state.userName,
+      password: this.state.password
+    }
+    
+    register(user)
+      .then( () => this.props.history.push('./login'))
+      .catch( error => console.error(error))
+  }
+  handleChange = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+
+    this.setState({ [key] : value})
+  }
+
+    
   render() {
     return (
       <div>
@@ -26,16 +51,26 @@ class Register extends Component {
         </Header>
         <Form size='large'>
           <Segment stacked>
-            <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+            <Form.Input 
+              fluid icon='user' 
+              iconPosition='left' 
+              placeholder='user name' 
+              name = 'userName' 
+              value = {this.state.userName}
+              onChange = {this.handleChange}
+              />
             <Form.Input
+              name = 'password'
+              value = {this.state.password}
               fluid
               icon='lock'
               iconPosition='left'
               placeholder='Password'
               type='password'
+              onChange = {this.handleChange}
             />
 
-            <Button color='teal' fluid size='large'>
+            <Button color='teal' fluid size='large' onClick = {this.handleClick}>
               Register
             </Button>
           </Segment>

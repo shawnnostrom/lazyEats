@@ -1,8 +1,31 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
+import {login} from '../../Api/Api'
 
 
 class Login extends Component {
+
+  state = {
+    username: '',
+    password: ''
+  }
+  handleClick = () => {
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    login(user)
+      .then(res => console.log(res))
+      .catch(error => console.log(error))
+
+  }
+  handleChange = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+
+    this.setState({ [key] : value})
+  }
+
 render() {
   return (
     <div>
@@ -26,16 +49,26 @@ render() {
         </Header>
         <Form size='large'>
           <Segment stacked>
-            <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+            <Form.Input 
+            fluid icon = 'user' 
+            iconPosition = 'left' 
+            placeholder = 'username'
+            name = 'username'
+            value = {this.state.username}
+            onChange = {this.handleChange}
+            />
             <Form.Input
               fluid
-              icon='lock'
-              iconPosition='left'
-              placeholder='Password'
-              type='password'
+              icon = 'lock'
+              iconPosition = 'left'
+              placeholder = 'Password'
+              type = 'password'
+              name = 'password'
+              value = {this.state.password}
+              onChange = {this.handleChange}
             />
 
-            <Button color='teal' fluid size='large'>
+            <Button color='teal' fluid size='large' onClick = {this.handleClick}>
               Login
             </Button>
           </Segment>
