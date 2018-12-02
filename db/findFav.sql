@@ -1,0 +1,1 @@
+select * from favorites where favorites.userid = $1;

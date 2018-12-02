@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
-import {login} from '../../Api/Api'
+import {connect} from 'react-redux'
+import {login} from '../../Redux/actions'
 
 
 class Login extends Component {
@@ -14,9 +15,10 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     }
-    login(user)
-      .then(res => console.log(res))
-      .catch(error => console.log(error))
+    this.props.login(user)
+
+      // .then( () => this.props.history.push('./dashboard'))
+      // .catch(error => console.log(error))
 
   }
   handleChange = (e) => {
@@ -25,7 +27,7 @@ class Login extends Component {
 
     this.setState({ [key] : value})
   }
-
+  
 render() {
   return (
     <div>
@@ -82,4 +84,4 @@ render() {
   }
 }
 
-export default Login;
+export default connect(null,{login})(Login);

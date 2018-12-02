@@ -20,6 +20,7 @@ module.exports = (app , db) => {
   app.use(passport.session())
 
   passport.serializeUser((user,done) => {
+    
     done(null, user.id)
   })
   passport.deserializeUser((id,done)=> {

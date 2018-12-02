@@ -1,4 +1,4 @@
-.item-box {
+.fav-box {
   border: solid black 1px;
   height: 300px;
   width: 300px;
@@ -7,12 +7,12 @@
   overflow: hidden;
   position: relative;
 }
-.item-img{
+.fav-img{
   height: 250px;
   width: 250px;
   overflow: hidden;
 }
-.item-title{
+.fav-title{
   font-size: 18px;
   width: 90%;
   white-space: nowrap;
@@ -20,17 +20,7 @@
   text-overflow: ellipsis;
   text-align: center;
 }
-.dash-display {
+.fav-display{
   display: flex;
-  flex-flow: row wrap
-}
-.fav-btn {
-  position: absolute;
-  top:0;
-  right:0
-}
-.del-btn {
-  position: absolute;
-  top:0;
-  left:0;
+  flex-flow: row wrap;
 }

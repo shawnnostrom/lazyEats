@@ -1,13 +1,13 @@
 const initState = {
-  location: [],
+  user: null,
 }
 
 
 const reducer = (state = initState,action) => {
 
   switch (action.type){
-    case "LOCATION": {
-      return {...state , location: action.payload}
+    case "USER": {
+      return {...state , user: action.payload.data}
     }
     default: return state;
   }

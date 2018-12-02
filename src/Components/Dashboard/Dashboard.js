@@ -2,12 +2,16 @@ import React, { Component } from 'react'
 import {connect}  from 'react-redux'
 import './Dashboard.css'
 import _ from 'lodash'
+import {saveFavorite} from '../../Api/Api'
 import {getFood} from '../../Api/Api'
+import {logout} from '../../Api/Api'
+import Food from '../Food/Food'
+
 
 class Dashboard extends Component {
 
   state = {
-    
+    findFood: false,
     food: []
   }
 
@@ -29,6 +33,7 @@ class Dashboard extends Component {
         longitude: position.coords.longitude,
         latitude: position.coords.latitude
       }
+      this.setState({findFood:true})
       getFood(location)
       .then( res => {
 
@@ -41,37 +46,65 @@ class Dashboard extends Component {
     })
     
   }
-  test = () => {
-    console.log(this.state.food)
-  
+  handleLogout = () => {
+   logout()
+    .then( () => this.props.history.push('./home'))
+    .catch(error => console.error(error))
         
-      
-    
-    
+  }
+  
+  test = () => {
+    console.log(this.props.user)
+  }
+  handleFavorite = (item) => {
+    const [food] = this.state.food.filter(i => i.id === item)
+    const favoritePlace = {
+      itemId: item,
+      name: food.name,
+      image: food.image_url,
+      url: food.url,
+      userId: this.props.user.id
     }
-  
-  
-  
+    saveFavorite(favoritePlace)
+
+  }
+  findFood = () => {
+    if(!this.state.findFood){
+      return (
+        <button onClick = {this.yelp} > Find Food</button>
+      )
+    }else{
+      
+    }
+  }
+  handleFavorite = () => {
+    this.props.history.push('./favorite')
+  }
   
 
   render() {
+    
   
     const restaurants = this.state.food.map(i =>  {
+      
       return (
-        <div className = 'item-box'> 
-          <a href = {i.url} target = '_blank' rel ='noopener noreferrer' > 
-          <h1 className = 'item-title'>{i.name}</h1>
-          <img src = {i.image_url} alt = ''  className = 'item-img' />
-          </a>
-        </div>
+        <Food 
+        url = {i.url}
+        name = {i.name}
+        image_url = {i.image_url}
+        id = {i.id}
+        />
       )
     })
     return (
       <div>
-        <button onClick = {this.yelp} > Find Food</button>
-        <button onClick = {this.test} > find location</button>
+        <h1>Welcome {this.props.user.username}</h1>
+        {this.findFood()}
+        <button onClick = {this.handleFavorite} > Favorites</button>
+        <button onClick = {this.handleLogout} > Logout </button>
+        
         <div className = 'dash-display'>
-
+       
         {restaurants}
         </div>
       </div>
@@ -80,7 +113,7 @@ class Dashboard extends Component {
 }
 const mapSateToProps = (state) => {
   return {
-    location : state.location
+    user : state.user.user
   }
 }
 
