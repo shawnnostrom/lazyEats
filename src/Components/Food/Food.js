@@ -9,7 +9,19 @@ class Food extends Component {
   state = {
     favorite:false
   }
+  componentDidMount = () => {
+    const favIds = this.props.favorites.map(favorite => favorite.id)
+
+    if(favIds.includes(this.props.id)){
+      this.setState({favorite:true})
+    }
+  }
+  
+  
   favorite = (id) => {
+    
+    
+   
     if (!this.state.favorite) {
       return (
         <button  onClick = {this.addFavorite} className='fav-btn' >
@@ -38,8 +50,10 @@ class Food extends Component {
   }
   deleteFavorite = (id) => {
     this.setState({favorite : false})
-    console.log(id)
     delFavorite(id)
+  }
+  test = () => {
+    console.log(this.props.favorites)
   }
 
   render() {
@@ -53,8 +67,7 @@ class Food extends Component {
           <img src = {this.props.image_url} alt = ''  className = 'item-img' />
           </a>
           {this.favorite(this.props.id)}
-          {/* <button className = 'fav-btn' onClick = {() => this.handleFavorite(this.props.id)}> fav </button>
-          <button className = 'del-btn' onClick = {() => this.del(this.props.id)}> del</button> */}
+          <button onClick = {this.test}> test</button>
         </div>
       
     )
@@ -62,7 +75,8 @@ class Food extends Component {
 }
 const mapStateToProps = state => {
   return {
-    user: state.user.user
+    user: state.user.user,
+    favorites: state.user.favorites
   }
 }
 

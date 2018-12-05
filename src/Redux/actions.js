@@ -33,3 +33,29 @@ export const login = (user) => {
     })
   }
 }
+export const getFavorites = (id) => {
+  return dispatch => {
+    
+    axios.post('/api/fav/favorites',id)
+    .then(item => {
+      console.log('actions',item)
+      dispatch ({
+        type: "FAVORITES",
+        payload: item
+      })
+    }) 
+  }
+}
+export const deleteFav = (id) => {
+  return dispatch => {
+    console.log('actions',id)
+    axios.delete(`/api/fav/delete/${id}`)
+    .then(() => {
+      
+      dispatch ({
+        type: "DELETE",
+        payload: id
+      })
+    })
+  }
+}

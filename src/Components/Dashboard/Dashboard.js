@@ -5,6 +5,7 @@ import _ from 'lodash'
 import {saveFavorite} from '../../Api/Api'
 import {getFood} from '../../Api/Api'
 import {logout} from '../../Api/Api'
+import {getFavorites} from '../../Redux/actions'
 import Food from '../Food/Food'
 
 
@@ -16,6 +17,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount = () => {
+    this.props.getFavorites({id:this.props.user.id})
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
         console.log(position.coords)
@@ -93,6 +95,8 @@ class Dashboard extends Component {
         name = {i.name}
         image_url = {i.image_url}
         id = {i.id}
+
+        
         />
       )
     })
@@ -113,8 +117,9 @@ class Dashboard extends Component {
 }
 const mapSateToProps = (state) => {
   return {
-    user : state.user.user
+    user : state.user.user,
+    favorite: state.user.favorites
   }
 }
 
-export default  connect(mapSateToProps)(Dashboard)
+export default  connect(mapSateToProps,{getFavorites})(Dashboard)

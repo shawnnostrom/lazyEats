@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {getFavorites} from '../../Api/Api'
 import {delFavorite} from '../../Api/Api'
+import {getFavorites} from '../../Redux/actions'
+import {deleteFav} from '../../Redux/actions'
 import './Favorite.css'
 
 
@@ -11,25 +12,17 @@ class Favorite extends Component {
     favorite: []
   }
   componentDidMount = () => {
-     this.display()
+   
   }
   
-  display = () => {
-    getFavorites({id:this.props.user.id})
-      .then(res => {
-        this.setState({ favorite : res.data})
-      })
-      .catch(error => console.log(error))
-  }
-
+  
   handleClick = (id) => {
-    delFavorite(id)
-    .then( () => this.display())
-    .catch(error => console.error(error))
+    this.props.deleteFav(id)
+    
   }
   
   render() {
-    const places = this.state.favorite.map(i => {
+    const places = this.props.favorite.map(i => {
       return (
         <div className = 'fav-box'>
           <a href = {i.url} target = '_blank' rel ='noopener noreferrer' > 
@@ -43,7 +36,7 @@ class Favorite extends Component {
     return (
       <div>
         <h1> Here are the places you like to eat {this.props.user.username} </h1>
-        <button  > favs</button>
+        
         <div className = 'fav-display'>
         {places}
         </div>
@@ -54,7 +47,8 @@ class Favorite extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user.user
+    user: state.user.user,
+    favorite: state.user.favorites
   }
 }
-export default connect(mapStateToProps)(Favorite);
+export default connect(mapStateToProps,{getFavorites,deleteFav})(Favorite);

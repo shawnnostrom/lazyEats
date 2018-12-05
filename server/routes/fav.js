@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+const isAuthenticated = require ('./helpers/authorize')
+
 router.use( (req,res,next) => {
   req.db = req.app.get('db')
   next();
 })
 
-router.post('/add', (req,res) => {
+router.post('/add',isAuthenticated ,(req,res) => {
   
   req.db.favorites.insert({ 
       id:req.body.itemId, 
@@ -16,18 +18,21 @@ router.post('/add', (req,res) => {
       userid: req.body.userId
     })
 })
-router.delete('/delete/:id', (req,res) => {
+router.delete('/delete/:id',isAuthenticated,(req,res) => {
+  
   req.db.delfav(req.params.id)
   .then( (data) => {
-    console.log(data)
+    
     res.send('deleted')
   })
   .catch(error => console.error(error))
   
 })
-router.post('/favorites', (req,res,next) => {
-  req.db.findFav(req.body.id)
+router.post('/favorites',isAuthenticated,(req,res,next) => {
+  
+  req.db.findFav([req.body.id])
   .then(data => {
+    
     res.send(data)
   })
   .catch(next)

@@ -13,7 +13,7 @@ export const saveFavorite = (place) => {
   return axios.post('/api/fav/add' ,place)
 }
 export const delFavorite = (id) => {
-  return axios.delete(`/api/fav/delete/${id}`,)
+  return axios.delete(`/api/fav/delete/${id}`)
 }
 export const getFavorites = (id) => {
   return axios.post('/api/fav/favorites',id)
