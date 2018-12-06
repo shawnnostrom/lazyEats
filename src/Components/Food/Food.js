@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import {saveFavorite} from '../../Api/Api'
 import {delFavorite} from '../../Api/Api'
+import {saveFav} from '../../Redux/actions'
 import {connect} from 'react-redux'
 
 
@@ -46,7 +47,7 @@ class Food extends Component {
       userId: this.props.user.id
     }
     this.setState({favorite : true})
-    saveFavorite(favoritePlace)
+    this.props.saveFav(favoritePlace)
   }
   deleteFavorite = (id) => {
     this.setState({favorite : false})
@@ -80,4 +81,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Food);
+export default connect(mapStateToProps,{saveFav})(Food);

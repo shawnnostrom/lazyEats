@@ -38,7 +38,7 @@ export const getFavorites = (id) => {
     
     axios.post('/api/fav/favorites',id)
     .then(item => {
-      console.log('actions',item)
+      
       dispatch ({
         type: "FAVORITES",
         payload: item
@@ -48,13 +48,24 @@ export const getFavorites = (id) => {
 }
 export const deleteFav = (id) => {
   return dispatch => {
-    console.log('actions',id)
     axios.delete(`/api/fav/delete/${id}`)
     .then(() => {
       
       dispatch ({
         type: "DELETE",
         payload: id
+      })
+    })
+  }
+}
+export const saveFav = (place) => {
+  return dispatch => {
+    axios.post('/api/fav/add' ,place)
+    .then(() => {
+      console.log('action',place)
+      dispatch ({
+        type: "ADD",
+        payload: place
       })
     })
   }

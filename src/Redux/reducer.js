@@ -16,6 +16,9 @@ const reducer = (state = initState,action) => {
     case "DELETE": {
       return {...state, favorites: state.favorites.filter(i => i.id !== action.payload)}
     }
+    case "ADD": {
+      return {...state, favorites: [...state.favorites, action.payload]}
+    }
     default: return state;
   }
 }

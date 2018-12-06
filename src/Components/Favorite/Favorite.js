@@ -20,6 +20,9 @@ class Favorite extends Component {
     this.props.deleteFav(id)
     
   }
+  dashboard = () => {
+    this.props.history.push('./dashboard')
+  }
   
   render() {
     const places = this.props.favorite.map(i => {
@@ -35,6 +38,7 @@ class Favorite extends Component {
     })
     return (
       <div>
+        <button onClick = {this.dashboard}> Dashboard</button>
         <h1> Here are the places you like to eat {this.props.user.username} </h1>
         
         <div className = 'fav-display'>

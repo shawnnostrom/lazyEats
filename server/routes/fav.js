@@ -8,7 +8,7 @@ router.use( (req,res,next) => {
   next();
 })
 
-router.post('/add',isAuthenticated ,(req,res) => {
+router.post('/add',isAuthenticated ,(req,res,next) => {
   
   req.db.favorites.insert({ 
       id:req.body.itemId, 
@@ -17,6 +17,10 @@ router.post('/add',isAuthenticated ,(req,res) => {
       url: req.body.url,
       userid: req.body.userId
     })
+    .then( () => {
+      res.send('success')
+    })
+    .catch(next)
 })
 router.delete('/delete/:id',isAuthenticated,(req,res) => {
   
