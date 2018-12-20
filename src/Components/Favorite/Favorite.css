@@ -1,11 +1,14 @@
 .fav-box {
-  border: solid black 1px;
+  border: solid black 2px;
+  border-radius:5px;
   height: 300px;
   width: 300px;
   margin-right: 5px;
   margin-bottom: 5px;
   overflow: hidden;
   position: relative;
+  background-color: lightblue;
+  
 }
 .fav-img{
   height: 250px;
@@ -13,7 +16,9 @@
   overflow: hidden;
 }
 .fav-title{
-  font-size: 18px;
+  color:black;
+  font-size: 20px;
+  margin-top:2px;
   width: 90%;
   white-space: nowrap;
   overflow: hidden;
@@ -23,4 +28,68 @@
 .fav-display{
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+}
+.fav-body{
+  background-image: url('./table3.jpeg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+}
+.fav-food-btn{
+  color:black;
+  font-size:20px;
+  padding:0;
+  margin-top:2px;
+  margin-right:5px;
+  position: absolute;
+  right:0;
+  top:0;
+  background:none;
+  outline: none;
+  border: none;
+  
+  
+}
+.fav-background-overlay{
+  box-sizing: inherit;
+  position: relative;
+}
+.fav-overlay {
+  width: 800px;
+  margin: auto;
+  border-radius: 5px;
+  background: black;
+  height: 45px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0.2;
+}
+.fav-title-overlay {
+  margin-top:2%;
+  margin-bottom: 2%;
+  color:white;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 32px;
+  letter-spacing: 2px;
+  
+}
+@media screen and (max-width: 992px) {
+  .fav-display{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  
+}
+@media screen and (max-width: 600px) {
+  .fav-display{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+ 
 }

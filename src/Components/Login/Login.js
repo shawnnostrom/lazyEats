@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
-import {connect} from 'react-redux'
-import {login} from '../../Redux/actions'
+import React, { Component } from 'react';
+import { Button, Form, Grid, Segment } from 'semantic-ui-react';
+import {connect} from 'react-redux';
+import {login} from '../../Redux/actions';
+import './Login.css';
 
 
 class Login extends Component {
@@ -17,10 +18,10 @@ class Login extends Component {
     }
     this.props.login(user)
 
-      // .then( () => this.props.history.push('./dashboard'))
-      // .catch(error => console.log(error))
+      
 
   }
+  
   handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
@@ -30,7 +31,8 @@ class Login extends Component {
   
 render() {
   return (
-    <div>
+    <div className = 'login-body'>
+      
         <div className='login-form'>
     {/*
       Heads up! The styles below are necessary for the correct render of this example.
@@ -46,11 +48,10 @@ render() {
     `}</style>
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='teal' textAlign='center'>
-           Log-in to your account
-        </Header>
+        <img src = '../Home/lazyeat.png' alt = ''/>
         <Form size='large'>
           <Segment stacked>
+          <img src = './lazyeat.png' alt = ''/>
             <Form.Input 
             fluid icon = 'user' 
             iconPosition = 'left' 
@@ -70,7 +71,7 @@ render() {
               onChange = {this.handleChange}
             />
 
-            <Button color='teal' fluid size='large' onClick = {this.handleClick}>
+            <Button color='teal' fluid size='large' onClick = {this.handleClick} className = 'login-btn'>
               Login
             </Button>
           </Segment>

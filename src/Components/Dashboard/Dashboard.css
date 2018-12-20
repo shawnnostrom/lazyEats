@@ -1,5 +1,6 @@
 .item-box {
-  border: solid black 1px;
+  border: solid black 2px;
+  border-radius:5px;
   height: 300px;
   width: 300px;
   margin-right: 5px;
@@ -22,7 +23,9 @@
 }
 .dash-display {
   display: flex;
-  flex-flow: row wrap
+  flex-flow: row wrap;
+  justify-content: center;
+  
 }
 .fav-btn {
   position: absolute;
@@ -33,4 +36,93 @@
   position: absolute;
   top:0;
   left:0;
+}
+.find-food-btn {
+  background-image: 
+  radial-gradient(
+      
+      #fc2802,
+      #ff9770,
+      #fc2802
+    );
+  font-family: 'Flavors', cursive;
+  letter-spacing: 3px;  
+  height: 200px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border:none;
+  border-radius: 100%;
+  font-size:32px;
+  margin-top: 10%;
+  -webkit-animation: bounce 1.2s infinite alternate;
+  -moz-animation: bounce 1.2s infinite alternate;
+  animation: bounce 1.2s infinite alternate;
+}
+@-webkit-keyframes bounce {
+  to { -webkit-transform: scale(1.6); }
+}
+@-moz-keyframes bounce {
+  to { -moz-transform: scale(1.6); }
+}
+@keyframes bounce {
+  to { transform: scale(1.6); }
+}
+
+
+
+.dashboard-body{
+  background-image: url('./table3.jpeg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+
+
+
+.overlay{
+  width: 400px;
+  margin: auto;
+  border-radius: 5px;
+  background: black;
+  height: 45px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.2;
+}
+
+.dashboard-title-background {
+  box-sizing: inherit;
+  position: relative;
+}
+#dashboard-title{
+  margin-top:2%;
+  margin-bottom: 2%;
+  color:white;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 32px;
+  letter-spacing: 2px;
+  
+}
+
+@media screen and (max-width: 992px) {
+  
+}
+@media screen and (max-width: 600px) {
+  .find-food-btn {
+    margin-top:20%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .find-food-btn {
+    margin-top:40%;
+  }
 }

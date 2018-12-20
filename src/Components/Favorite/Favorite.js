@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {delFavorite} from '../../Api/Api'
 import {getFavorites} from '../../Redux/actions'
 import {deleteFav} from '../../Redux/actions'
+import Navbar from '../Navbar/Navbar'
 import './Favorite.css'
 
 
@@ -32,17 +32,20 @@ class Favorite extends Component {
           <h1 className = 'fav-title'>{i.name}</h1>
           <img src = {i.image} alt = ''  className = 'fav-img' />
           </a>
-          <button className = 'fav-btn' onClick = {() => this.handleClick(i.id)} >del</button>
+          <button className = 'fav-food-btn' onClick = {() => this.handleClick(i.id)} >X</button>
         </div>
       )
     })
     return (
-      <div>
-        <button onClick = {this.dashboard}> Dashboard</button>
-        <h1> Here are the places you like to eat {this.props.user.username} </h1>
+      <div className = 'fav-body'>
+          <Navbar page = {this.props.history.push} />
+        <div className = 'fav-background-overlay' >
+          <div className = 'fav-overlay1' />
+          <h1 className = 'fav-title-overlay' > {this.props.user.username}  Here are the places you like to eat  </h1>
         
-        <div className = 'fav-display'>
-        {places}
+          <div className = 'fav-display'>
+          {places}
+          </div>
         </div>
       </div>
     )

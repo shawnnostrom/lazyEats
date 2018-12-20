@@ -1,0 +1,220 @@
+.nav-btn{
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  position: absolute;
+  right:0;
+}
+.home-btn {
+  display: flex;
+  align-content: center;
+  margin: 0;
+  padding:0;
+  width: 100px;
+  height: 50px;
+  background:none;
+  border:none;
+  color: white;
+  font-size: 22px;
+  outline: none;
+}
+.mobile-home {
+  display: flex;
+  align-content: center;
+  margin: 0;
+  padding: 0;
+  color:white;
+  background:none;
+  border:none;
+  outline:none;
+  margin-top:10px;
+  margin-left:20px;
+
+}
+.favorite-btn {
+  display: flex;
+  align-content: center;
+  outline: none;
+  width: 100px;
+  height: 50px;
+  background:none;
+  border:none;
+  color: white;
+  font-size: 22px;
+}
+.mobile-fav {
+  
+  margin: 0;
+  padding-top: 10px;
+  color:red;
+  background:none;
+  border:none;
+  outline:none;
+  margin-top:8px;
+  margin-left:20px;
+}
+.logout-btn {
+  display: flex;
+  align-content: center;
+  outline:none;
+  width: 100px;
+  height: 50px;
+  background:none;
+  border:none;
+  color: white;
+  font-size: 22px;
+}
+.mobile-logout {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  position: absolute;
+  top:0;
+  right:0;
+  margin-top: 13px;
+  color:white;
+  background:none;
+  border:none;
+  outline:none;
+
+}
+.nav-bar{
+  background-image: 
+    linear-gradient(
+      to right,
+      Blue,
+      lightblue,
+      white,
+      lightblue,
+      Blue
+    );
+  
+  height: 60px;
+  position: relative;
+  
+}
+.nav-title{
+  position: absolute;
+  left:0;
+  right: 0;
+  padding-top:5px;
+  font-family: 'Flavors', cursive;
+  font-size: 42px;
+  color: blue;
+  letter-spacing: 10px;
+
+}
+
+.mobile-nav-btn{
+  display:none
+
+}
+.small-mobile-nav-btn {
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .mobile-nav-btn{
+    display: flex;
+    
+    align-content: center;
+    position: relative;
+    
+  
+   }
+   .nav-btn {
+     display: none;
+   }
+  
+}
+@media screen and (max-width: 600px) {
+ .mobile-nav-btn{
+  display: flex;
+  
+  align-content: center;
+  position: relative;
+  
+
+ }
+ .nav-btn {
+   display: none;
+ }
+ .nav-title{
+  position: absolute;
+  left:0;
+  right: 0;
+  padding-top:5px;
+  font-family: 'Flavors', cursive;
+  font-size: 32px;
+  color: blue;
+  letter-spacing: 10px;
+
+}
+.mobile-fav {
+  
+  margin: 0;
+  padding-top: 10px;
+  color:red;
+  background:none;
+  border:none;
+  outline:none;
+  margin-top:8px;
+  margin-left:5px;
+}
+.mobile-home {
+  display: flex;
+  align-content: center;
+  margin: 0;
+  padding: 0;
+  color:white;
+  background:none;
+  border:none;
+  outline:none;
+  margin-top:10px;
+  margin-left:5px;
+
+}
+}
+@media screen and (max-width: 375px){
+  .small-mobile-nav-btn{
+    display: flex;
+    align-content: center;
+    position: relative;
+  }
+  .mobile-nav-btn{
+    display: none;
+   }
+}
+@media screen and (max-width: 320px) {
+
+  .small-mobile-nav-btn{
+    display: flex;
+    align-content: center;
+    position: relative;
+  }
+  .mobile-nav-btn{
+    display: none;
+   }
+  .nav-title{
+    position: absolute;
+    left:0;
+    right: 0;
+    padding-top:15px;
+    font-family: 'Flavors', cursive;
+    font-size: 22px;
+    color: blue;
+    letter-spacing: 10px;
+  
+  }
+  .mobile-fav {
+  
+    margin: 0;
+    padding-top: 10px;
+    color:red;
+    background:none;
+    border:none;
+    outline:none;
+    margin-top:8px;
+    margin-left:2px;
+  }
+}

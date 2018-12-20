@@ -19,9 +19,3 @@ export const getFavorites = (id) => {
   return axios.post('/api/fav/favorites',id)
 }
 
-export const logout = () => {
-  return axios.get('/api/auth/logout')
-}
-export const auth = () => {
-  return axios.get('/api/auth/session')
-}

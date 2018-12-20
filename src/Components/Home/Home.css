@@ -1,0 +1,39 @@
+img {
+  height: 250px;
+  
+}
+.home-body {
+  background-image: url('table3.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+ 
+
+}
+.login-btn {
+  height: 50px;
+  width: 150px;
+  border-radius: 5px;
+  background-color:lightgreen;
+  font-size:22px;
+}
+.register-btn {
+  height: 50px;
+  width: 150px;
+  border-radius: 5px;
+  background-color: lightcoral;
+  margin-left: 5px;
+  font-size:22px;
+}
+.home-p {
+  font-size: 20px;
+  color: black;
+  width: 60%;
+  margin:auto;
+  background-color:darkgrey;
+  border-radius: 5px;
+  opacity: .9;
+  padding: 10px;
+  margin-bottom: 10px;
+}

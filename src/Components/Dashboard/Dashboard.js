@@ -1,12 +1,14 @@
-import React, { Component } from 'react'
-import {connect}  from 'react-redux'
-import './Dashboard.css'
-import _ from 'lodash'
-import {saveFavorite} from '../../Api/Api'
-import {getFood} from '../../Api/Api'
-import {logout} from '../../Api/Api'
-import {getFavorites} from '../../Redux/actions'
-import Food from '../Food/Food'
+import React, { Component } from 'react';
+import {connect}  from 'react-redux';
+import 'semantic-ui-css/semantic.min.css';
+import './Dashboard.css';
+import _ from 'lodash';
+import {saveFavorite} from '../../Api/Api';
+import {getFood} from '../../Api/Api';
+import {getFavorites} from '../../Redux/actions';
+import Food from '../Food/Food';
+import Navbar from '../Navbar/Navbar'
+
 
 
 class Dashboard extends Component {
@@ -48,16 +50,9 @@ class Dashboard extends Component {
     })
     
   }
-  handleLogout = () => {
-   logout()
-    .then( () => this.props.history.push('./home'))
-    .catch(error => console.error(error))
-        
-  }
   
-  test = () => {
-    console.log(this.props.user)
-  }
+  
+  
   handleFavorite = (item) => {
     const [food] = this.state.food.filter(i => i.id === item)
     const favoritePlace = {
@@ -73,15 +68,15 @@ class Dashboard extends Component {
   findFood = () => {
     if(!this.state.findFood){
       return (
-        <button onClick = {this.yelp} > Find Food</button>
+        
+        
+        
+        <button className = 'find-food-btn'  onClick = {this.yelp} > Find Food</button>
+        
       )
-    }else{
-      
     }
   }
-  handleFavorite = () => {
-    this.props.history.push('./favorite')
-  }
+  
   
 
   render() {
@@ -96,16 +91,20 @@ class Dashboard extends Component {
         image_url = {i.image_url}
         id = {i.id}
 
-        
+
         />
       )
     })
     return (
-      <div>
-        <h1>Welcome {this.props.user.username}</h1>
+      <div className = 'dashboard-body'>
+        <Navbar page = {this.props.history.push}/>
+        
+        <div className = 'dashboard-title-background'>
+            <div className='overlay1'/>
+            <h2 id = 'dashboard-title'>Welcome {this.props.user.username}</h2>
+        </div>
         {this.findFood()}
-        <button onClick = {this.handleFavorite} > Favorites</button>
-        <button onClick = {this.handleLogout} > Logout </button>
+        
         
         <div className = 'dash-display'>
        

@@ -1,0 +1,10 @@
+.register-body {
+  background-image: url('hotdogs.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

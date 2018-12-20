@@ -2,4 +2,20 @@
   position: absolute;
   right:0;
   top:0;
+  background:none;
+  outline: none;
+  border: none;
+  color: red;
+  margin-top:5px;
+  margin-right:-5px
+  
+}
+.item-box{
+  background: lightblue;
+  
+}
+.item-title{
+  color:black;
+  font-size: 20px;
+  margin-top:2px;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 import {register} from '../../Api/Api'
+import './Register.css'
 
 class Register extends Component {
 
@@ -29,8 +30,8 @@ class Register extends Component {
     
   render() {
     return (
-      <div>
-        <div>
+      <div className = 'register-body' >
+      
         <div className='login-form'>
     {/*
       Heads up! The styles below are necessary for the correct render of this example.
@@ -46,11 +47,10 @@ class Register extends Component {
     `}</style>
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='teal' textAlign='center'>
-           Register for an  account
-        </Header>
+        
         <Form size='large'>
           <Segment stacked>
+        <img  src = './lazyeat.png' alt = '' />
             <Form.Input 
               fluid icon='user' 
               iconPosition='left' 
@@ -78,9 +78,8 @@ class Register extends Component {
       </Grid.Column>
     </Grid>
   </div>
-
-    </div>
-      </div>
+  </div>
+  
     )
   }
 }

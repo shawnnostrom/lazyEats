@@ -10,6 +10,9 @@ const reducer = (state = initState,action) => {
     case "USER": {
       return {...state , user: action.payload.data}
     }
+    case "LOGOUT": {
+      return {...state , user: action.payload}
+    }
     case "FAVORITES": {
       return {...state, favorites: action.payload.data}
     }

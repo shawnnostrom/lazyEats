@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css';
-import {saveFavorite} from '../../Api/Api'
-import {delFavorite} from '../../Api/Api'
-import {saveFav} from '../../Redux/actions'
-import {connect} from 'react-redux'
+import {delFavorite} from '../../Api/Api';
+import {saveFav} from '../../Redux/actions';
+import {connect} from 'react-redux';
+import _ from 'lodash';
+import './Food.css'
 
 
 class Food extends Component {
@@ -25,19 +26,21 @@ class Food extends Component {
    
     if (!this.state.favorite) {
       return (
-        <button  onClick = {this.addFavorite} className='fav-btn' >
-          <i aria-hidden='true' className='heart outline icon' />
+        <button  onClick={_.debounce(this.addFavorite,500)} className='fav-btn' >
+          <i aria-hidden='true' className='heart outline big icon' />
         </button>
       )
       
     }else {
       return (
-        <button onClick = {() => this.deleteFavorite(id)} className='fav-btn' >
-          <i aria-hidden='true' className='heart icon' />
+        <button onClick = {_.debounce(() => this.deleteFavorite(id),500)} className='fav-btn' >
+          <i aria-hidden='true' className='heart big icon' id = 'heart'/>
         </button>
       )
     }
   }
+ 
+
   addFavorite = () => {
     const favoritePlace = {
       itemId: this.props.id,
@@ -46,29 +49,32 @@ class Food extends Component {
       url: this.props.url,
       userId: this.props.user.id
     }
+    
     this.setState({favorite : true})
     this.props.saveFav(favoritePlace)
+  
   }
   deleteFavorite = (id) => {
+    
     this.setState({favorite : false})
     delFavorite(id)
+    
   }
-  test = () => {
-    console.log(this.props.favorites)
-  }
+  
 
   render() {
 
 
     return (
-      <div className = 'item-box'> 
+      
+        <div className = 'item-box'> 
       
           <a href = {this.props.url} target = '_blank' rel ='noopener noreferrer' > 
           <h1 className = 'item-title'>{this.props.name}</h1>
           <img src = {this.props.image_url} alt = ''  className = 'item-img' />
           </a>
           {this.favorite(this.props.id)}
-          <button onClick = {this.test}> test</button>
+          
         </div>
       
     )

@@ -3,6 +3,7 @@ import axios from 'axios'
 
 export const getSession = () => {
   return dispatch => {
+
     axios.get('/api/auth/session')
       .then(( user ) => {
         dispatch ({
@@ -30,6 +31,17 @@ export const login = (user) => {
       if (user){
         dispatch(push('/dashboard'))
       }
+    })
+  }
+}
+export const logout = () => {
+  return dispatch => {
+    axios.get('/api/auth/logout')
+    .then(() => {
+      dispatch ({
+        type: "LOGOUT",
+        payload: null
+      })
     })
   }
 }
@@ -62,7 +74,6 @@ export const saveFav = (place) => {
   return dispatch => {
     axios.post('/api/fav/add' ,place)
     .then(() => {
-      console.log('action',place)
       dispatch ({
         type: "ADD",
         payload: place
