@@ -17,15 +17,11 @@ class Login extends Component {
       password: this.state.password
     }
     this.props.login(user)
-
-      
-
   }
   
   handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
-
     this.setState({ [key] : value})
   }
   
@@ -33,7 +29,7 @@ render() {
   return (
     <div className = 'login-body'>
       
-        <div className='login-form'>
+      <div className='login-form'>
     {/*
       Heads up! The styles below are necessary for the correct render of this example.
       You can do same with CSS, the main idea is that all the elements up to the `Grid`
@@ -79,8 +75,7 @@ render() {
       </Grid.Column>
     </Grid>
   </div>
-
-    </div>
+  </div>
     )
   }
 }

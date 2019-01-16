@@ -17,8 +17,8 @@ class Navbar extends Component {
     this.props.page('./favorite')
   }
   handleLogout = () => {
+    this.props.page('./home')     
     this.props.logout()
-         
    }
 
   render() {

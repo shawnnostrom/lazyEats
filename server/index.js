@@ -12,9 +12,9 @@ const app = express();
 
 
 app.use(cors())
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(bodyParser.json())
 app.use(logger('tiny'))
-app.use( express.static( `${__dirname}/../build` ) );
 
 
 massive (process.env.dataBase)
@@ -23,12 +23,10 @@ massive (process.env.dataBase)
   console.log('connected to database')
   require('./configure/session')(app,db);
   app.use('/api', require('./routes'))
+  app.get('/*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+  });
+  app.listen(8080 , () => console.log('listening on 8080'))
 })
 .catch ( error => console.error (error))
 
-
-
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-});
-app.listen(8080 , () => console.log('listening on 8080'))

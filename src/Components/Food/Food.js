@@ -11,9 +11,9 @@ class Food extends Component {
   state = {
     favorite:false
   }
+
   componentDidMount = () => {
     const favIds = this.props.favorites.map(favorite => favorite.id)
-
     if(favIds.includes(this.props.id)){
       this.setState({favorite:true})
     }
@@ -21,16 +21,12 @@ class Food extends Component {
   
   
   favorite = (id) => {
-    
-    
-   
     if (!this.state.favorite) {
       return (
         <button  onClick={_.debounce(this.addFavorite,500)} className='fav-btn' >
           <i aria-hidden='true' className='heart outline big icon' />
         </button>
       )
-      
     }else {
       return (
         <button onClick = {_.debounce(() => this.deleteFavorite(id),500)} className='fav-btn' >
@@ -49,37 +45,29 @@ class Food extends Component {
       url: this.props.url,
       userId: this.props.user.id
     }
-    
     this.setState({favorite : true})
     this.props.saveFav(favoritePlace)
-  
   }
+
   deleteFavorite = (id) => {
-    
     this.setState({favorite : false})
     delFavorite(id)
-    
   }
   
 
   render() {
-
-
     return (
-      
         <div className = 'item-box'> 
-      
           <a href = {this.props.url} target = '_blank' rel ='noopener noreferrer' > 
-          <h1 className = 'item-title'>{this.props.name}</h1>
-          <img src = {this.props.image_url} alt = ''  className = 'item-img' />
+            <h1 className = 'item-title'>{this.props.name}</h1>
+            <img src = {this.props.image_url} alt = ''  className = 'item-img' />
           </a>
-          {this.favorite(this.props.id)}
-          
+          {this.favorite(this.props.id)} 
         </div>
-      
     )
   }
 }
+
 const mapStateToProps = state => {
   return {
     user: state.user.user,

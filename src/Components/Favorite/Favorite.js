@@ -11,14 +11,9 @@ class Favorite extends Component {
   state = {
     favorite: []
   }
-  componentDidMount = () => {
-   
-  }
-  
   
   handleClick = (id) => {
     this.props.deleteFav(id)
-    
   }
   dashboard = () => {
     this.props.history.push('./dashboard')
@@ -42,7 +37,6 @@ class Favorite extends Component {
         <div className = 'fav-background-overlay' >
           <div className = 'fav-overlay1' />
           <h1 className = 'fav-title-overlay' > {this.props.user.username}  Here are the places you like to eat  </h1>
-        
           <div className = 'fav-display'>
           {places}
           </div>

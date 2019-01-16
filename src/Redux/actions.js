@@ -6,20 +6,20 @@ export const getSession = () => {
 
     axios.get('/api/auth/session')
       .then(( user ) => {
+        console.log(user)
         dispatch ({
           type: "USER",
           payload: user
         });
-        if (user) {
-          
-          dispatch(push('/dashboard'));
+        if (!user) {
+          dispatch(push('/home'));
         } else {
-          console.log('log in ')
           dispatch(push('/home'));
         }
       })
   }
 }
+
 export const login = (user) => {
   return dispatch => {
     axios.post('/api/auth/login',user)
@@ -47,10 +47,8 @@ export const logout = () => {
 }
 export const getFavorites = (id) => {
   return dispatch => {
-    
     axios.post('/api/fav/favorites',id)
     .then(item => {
-      
       dispatch ({
         type: "FAVORITES",
         payload: item
@@ -62,7 +60,6 @@ export const deleteFav = (id) => {
   return dispatch => {
     axios.delete(`/api/fav/delete/${id}`)
     .then(() => {
-      
       dispatch ({
         type: "DELETE",
         payload: id

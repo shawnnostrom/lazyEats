@@ -44,11 +44,7 @@ class Dashboard extends Component {
         this.setState({food : _.uniqBy(res.data.jsonBody.businesses, (e) => e.name) })
        })
        .catch( error => console.log(error))
-
-      
-
     })
-    
   }
   
   
@@ -68,11 +64,7 @@ class Dashboard extends Component {
   findFood = () => {
     if(!this.state.findFood){
       return (
-        
-        
-        
         <button className = 'find-food-btn'  onClick = {this.yelp} > Find Food</button>
-        
       )
     }
   }
@@ -90,25 +82,19 @@ class Dashboard extends Component {
         name = {i.name}
         image_url = {i.image_url}
         id = {i.id}
-
-
         />
       )
     })
     return (
       <div className = 'dashboard-body'>
         <Navbar page = {this.props.history.push}/>
-        
         <div className = 'dashboard-title-background'>
             <div className='overlay1'/>
             <h2 id = 'dashboard-title'>Welcome {this.props.user.username}</h2>
         </div>
         {this.findFood()}
-        
-        
         <div className = 'dash-display'>
-       
-        {restaurants}
+          {restaurants}
         </div>
       </div>
     )
