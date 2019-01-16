@@ -14,7 +14,6 @@ router.post('/info', (req , res) => {
     sort_by: 'distance',
     open_now: true,
     attributes: 'delivery'
-  
   };
   client.search(searchRequest)
     .then(response => res.send(response))

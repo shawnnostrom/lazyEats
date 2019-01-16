@@ -3,13 +3,13 @@ img {
   
 }
 .home-body {
-  background-image: url('table3.jpeg');
-  background-repeat: no-repeat;
+  background-image: url('bugerbackground.jpeg');
+  background-attachment: fixed;
   background-size: cover;
-  height: 100vh;
-  width: 100vw;
- 
-
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
 }
 .login-btn {
   height: 50px;
@@ -36,4 +36,18 @@ img {
   opacity: .9;
   padding: 10px;
   margin-bottom: 10px;
+}
+@media screen and (max-width: 320px) {
+  .home-body {
+   
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    overflow: scroll;
+  }
+  .logo-img {
+    height: 200px;
+  }
 }

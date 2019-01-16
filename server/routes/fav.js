@@ -9,7 +9,6 @@ router.use( (req,res,next) => {
 })
 
 router.post('/add',isAuthenticated ,(req,res,next) => {
-  
   req.db.favorites.insert({ 
       id:req.body.itemId, 
       name: req.body.name, 
@@ -23,20 +22,15 @@ router.post('/add',isAuthenticated ,(req,res,next) => {
     .catch(next)
 })
 router.delete('/delete/:id',isAuthenticated,(req,res) => {
-  
   req.db.delfav(req.params.id)
   .then( (data) => {
-    
     res.send('deleted')
   })
   .catch(error => console.error(error))
-  
 })
 router.post('/favorites',isAuthenticated,(req,res,next) => {
-  
   req.db.findFav([req.body.id])
   .then(data => {
-    
     res.send(data)
   })
   .catch(next)

@@ -119,10 +119,16 @@
   .find-food-btn {
     margin-top:20%;
   }
+  .dashboard-body {
+    overflow: scroll;
+  }
 }
 
 @media screen and (max-width: 320px) {
   .find-food-btn {
     margin-top:40%;
+  }
+  .dashboard-body {
+    overflow: scroll;
   }
 }
