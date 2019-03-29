@@ -50,7 +50,7 @@
   background:none;
   border:none;
   outline:none;
-  margin-top:8px;
+  margin-top:10px;
   margin-left:20px;
 }
 .logout-btn {
@@ -91,7 +91,8 @@
   
   height: 60px;
   position: relative;
-  
+  width: 100%;
+  margin:0;
 }
 .nav-title{
   position: absolute;
@@ -111,6 +112,7 @@
 }
 .small-mobile-nav-btn {
   display: none;
+  
 }
 
 @media screen and (max-width: 992px) {
@@ -180,9 +182,14 @@
     display: flex;
     align-content: center;
     position: relative;
+    
   }
   .mobile-nav-btn{
     display: none;
+   }
+   .mobile-home {
+     margin-top:15px;
+     margin-left:15px;
    }
 }
 @media screen and (max-width: 320px) {
@@ -205,6 +212,10 @@
     color: blue;
     letter-spacing: 10px;
   
+  }
+  .mobile-home {
+    margin-top: 15px;
+    margin-left: 10px;
   }
   .mobile-fav {
   

@@ -82,16 +82,18 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    overflow: scroll;
+    background-attachment: scroll;
   }
-  
+  .fav-title-overlay {
+    font-size:24px;
+  }
 }
 @media screen and (max-width: 600px) {
   .fav-display{
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    overflow: scroll;
+    background-attachment: scroll;
   }
  
 }

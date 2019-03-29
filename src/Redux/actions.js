@@ -14,7 +14,7 @@ export const getSession = () => {
         if (!user) {
           dispatch(push('/home'));
         } else {
-          dispatch(push('/home'));
+          dispatch(push('/dashboard'));
         }
       })
   }

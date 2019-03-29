@@ -20,6 +20,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  
+
 }
 .dash-display {
   display: flex;
@@ -78,6 +80,8 @@
   height: 100%;
   width: 100%;
   min-height: 100vh;
+  margin: 0;
+
 }
 
 
@@ -103,7 +107,7 @@
   position: relative;
 }
 #dashboard-title{
-  margin-top:2%;
+  
   margin-bottom: 2%;
   color:white;
   font-family: 'Shadows Into Light', cursive;
@@ -129,6 +133,6 @@
     margin-top:40%;
   }
   .dashboard-body {
-    overflow: scroll;
+    /* overflow: scroll; */
   }
 }

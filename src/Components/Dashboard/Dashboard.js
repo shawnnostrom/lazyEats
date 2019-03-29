@@ -15,7 +15,8 @@ class Dashboard extends Component {
 
   state = {
     findFood: false,
-    food: []
+    food: [],
+    mobile: false
   }
 
   componentDidMount = () => {
@@ -86,20 +87,24 @@ class Dashboard extends Component {
       )
     })
     return (
-      <div className = 'dashboard-body'>
-        <Navbar page = {this.props.history.push}/>
+      <div >
+        <Navbar page = {this.props.history.push} mobile = {this.state.mobile}/>
+        <div className = 'dashboard-body'>
         <div className = 'dashboard-title-background'>
-            <div className='overlay1'/>
+            {/* <div className='overlay1'/> */}
             <h2 id = 'dashboard-title'>Welcome {this.props.user.username}</h2>
         </div>
         {this.findFood()}
         <div className = 'dash-display'>
           {restaurants}
         </div>
+        </div>
       </div>
     )
   }
 }
+
+
 const mapSateToProps = (state) => {
   return {
     user : state.user.user,

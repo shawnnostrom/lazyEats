@@ -10,15 +10,37 @@ import 'semantic-ui-css/semantic.min.css';
 
 class Navbar extends Component {
 
+  state = {
+    mobile: false,
+  }
+
   handleHome = () => {
+    this.setState({mobile: false})
     this.props.page('./dashboard')
   }
   handleFavorite = () => {
+    this.setState({mobile: true})
     this.props.page('./favorite')
   }
   handleLogout = () => {
     this.props.page('./home')     
     this.props.logout()
+   }
+
+   mobileButtons = () => {
+      if (!this.props.mobile) {
+        return (
+          <button className = 'mobile-fav' onClick = {this.handleFavorite} >
+            <i aria-hidden='true' className = 'heart large icon'></i>
+          </button>
+        )
+      }else {
+        return (
+          <button className = 'mobile-home' onClick = {this.handleHome}> 
+            <i aria-hidden='true' className = 'home large icon' ></i>
+          </button>
+      )
+    }
    }
 
   render() {
@@ -44,12 +66,7 @@ class Navbar extends Component {
           </button>
         </div>
         <div className = 'small-mobile-nav-btn'>
-          <button className = 'mobile-home' onClick = {this.handleHome}> 
-            <i aria-hidden='true' className = 'home large icon' ></i>
-          </button>
-          <button className = 'mobile-fav' onClick = {this.handleFavorite} >
-            <i aria-hidden='true' className = 'heart large icon'></i>
-          </button>
+          {this.mobileButtons()}
           <button className = 'mobile-logout' onClick = {this.handleLogout} >
             <i aria-hidden='true' className = 'sign-out large icon'></i>
           </button>
